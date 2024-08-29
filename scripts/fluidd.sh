@@ -87,7 +87,7 @@ function install_fluidd_macros() {
     echo -e "| have Fluidd fully functional and working.             |"
     blank_line
     echo -e "| The recommended macros for Fluidd can be found here:  |"
-    echo -e "| https://github.com/fluidd-core/fluidd-config           |"
+    echo -e "| https://github.com/fluidd-core/fluidd-config-zb           |"
     blank_line
     echo -e "| If you already use these macros skip this step.       |"
     echo -e "| Otherwise you should consider to answer with 'yes' to |"
@@ -112,7 +112,7 @@ function install_fluidd_macros() {
 function download_fluidd_macros() {
   local ms_cfg_repo path configs regex line gcode_dir
 
-  ms_cfg_repo="https://github.com/fluidd-core/fluidd-config.git"
+  ms_cfg_repo="https://github.com/Transistor427/fluidd-config-zb.git"
   regex="${HOME//\//\\/}\/([A-Za-z0-9_]+)\/config\/printer\.cfg"
   configs=$(find "${HOME}" -maxdepth 3 -regextype posix-extended -regex "${regex}" | sort)
 
@@ -122,9 +122,9 @@ function download_fluidd_macros() {
     return
   fi
 
-  status_msg "Cloning fluidd-config ..."
-  [[ -d "${HOME}/fluidd-config" ]] && rm -rf "${HOME}/fluidd-config"
-  if git clone --recurse-submodules "${ms_cfg_repo}" "${HOME}/fluidd-config"; then
+  status_msg "Cloning fluidd-config-zb ..."
+  [[ -d "${HOME}/fluidd-config-zb" ]] && rm -rf "${HOME}/fluidd-config-zb"
+  if git clone --recurse-submodules "${ms_cfg_repo}" "${HOME}/fluidd-config-zb"; then
     for config in ${configs}; do
       path=$(echo "${config}" | rev | cut -d"/" -f2- | rev)
 
@@ -142,7 +142,7 @@ function download_fluidd_macros() {
         rm -rf "${path}/fluidd.cfg"
       fi
 
-      if ! ln -sf "${HOME}/fluidd-config/client.cfg" "${path}/fluidd.cfg"; then
+      if ! ln -sf "${HOME}/fluidd-config-zb/client.cfg" "${path}/fluidd.cfg"; then
         error_msg "Creating symlink failed! Aborting installation ..."
         return
       fi
@@ -258,11 +258,11 @@ function remove_legacy_fluidd_log_symlinks() {
 }
 
 function remove_fluidd_config() {
-  if [[ -d "${HOME}/fluidd-config"  ]]; then
-    status_msg "Removing ${HOME}/fluidd-config ..."
-    rm -rf "${HOME}/fluidd-config"
-    ok_msg "${HOME}/fluidd-config removed!"
-    print_confirm "Fluidd-Config successfully removed!"
+  if [[ -d "${HOME}/fluidd-config-zb"  ]]; then
+    status_msg "Removing ${HOME}/fluidd-config-zb ..."
+    rm -rf "${HOME}/fluidd-config-zb"
+    ok_msg "${HOME}/fluidd-config-zb removed!"
+    print_confirm "fluidd-config-zb successfully removed!"
   fi
 }
 
@@ -364,16 +364,16 @@ function get_fluidd_download_url() {
   local releases_by_tag tags tag unstable_url url
 
   ### latest stable download url
-  url="https://github.com/fluidd-core/fluidd/releases/latest/download/fluidd.zip"
+  url="https://github.com/Z-Bolt/fluidd-zb/releases/latest/download/fluidd.zip"
 
   read_kiauh_ini "${FUNCNAME[0]}"
   if [[ ${fluidd_install_unstable} == "true" ]]; then
-    releases_by_tag="https://api.github.com/repos/fluidd-core/fluidd/tags"
+    releases_by_tag="https://api.github.com/repos/Z-Bolt/fluidd-zb/tags"
     tags=$(curl -s "${releases_by_tag}" | grep "name" | cut -d'"' -f4)
     tag=$(echo "${tags}" | head -1)
 
     ### latest unstable download url including pre-releases (alpha, beta, rc)
-    unstable_url="https://github.com/fluidd-core/fluidd/releases/download/${tag}/fluidd.zip"
+    unstable_url="https://github.com/Z-Bolt/fluidd-zb/releases/download/${tag}/fluidd.zip"
 
     if [[ ${unstable_url} == *"download//"* ]]; then
       warn_msg "Download URL broken! Falling back to URL of latest stable release!"
@@ -462,8 +462,8 @@ function patch_fluidd_update_manager() {
 [update_manager fluidd]
 type: web
 channel: stable
-repo: fluidd-core/fluidd
-path: ~/fluidd
+repo: Z-Bolt/fluidd-zb
+path: ~/fluidd-zb
 MOONRAKER_CONF
 
     fi
@@ -483,19 +483,19 @@ function patch_fluidd_config_update_manager() {
 
   patched="false"
   for conf in ${moonraker_configs}; do
-    if ! grep -Eq "^\[update_manager fluidd-config\]\s*$" "${conf}"; then
+    if ! grep -Eq "^\[update_manager fluidd-config-zb\]\s*$" "${conf}"; then
       ### add new line to conf if it doesn't end with one
       [[ $(tail -c1 "${conf}" | wc -l) -eq 0 ]] && echo "" >> "${conf}"
 
       ### add Fluidds update manager section to moonraker.conf
-      status_msg "Adding Fluidd-Config to update manager in file:\n       ${conf}"
+      status_msg "Adding fluidd-config-zb to update manager in file:\n       ${conf}"
       /bin/sh -c "cat >> ${conf}" << MOONRAKER_CONF
 
-[update_manager fluidd-config]
+[update_manager fluidd-config-zb]
 type: git_repo
-primary_branch: master
-path: ~/fluidd-config
-origin: https://github.com/fluidd-core/fluidd-config.git
+primary_branch: Z-BoltUI3
+path: ~/fluidd-config-zb
+origin: https://github.com/Z-Bolt/fluidd-config-zb.git
 managed_services: klipper
 MOONRAKER_CONF
 

@@ -33,12 +33,14 @@ function set_globals() {
   #================== KLIPPER ===================#
   KLIPPY_ENV="${HOME}/klippy-env"
   KLIPPER_DIR="${HOME}/klipper"
-  KLIPPER_REPO="https://github.com/Klipper3d/klipper.git"
+  KLIPPER_REPO="https://github.com/Z-Bolt/klipper.git"
+  KLIPPER_BRANCH="Z-BoltUI3"
 
   #================= MOONRAKER ==================#
   MOONRAKER_ENV="${HOME}/moonraker-env"
   MOONRAKER_DIR="${HOME}/moonraker"
-  MOONRAKER_REPO="https://github.com/Arksine/moonraker.git"
+  MOONRAKER_REPO="https://github.com/Z-Bolt/moonraker.git"
+  MOONRAKER_BRANCH="Z-BoltUI3"
 
   #================= MAINSAIL ===================#
   MAINSAIL_DIR="${HOME}/mainsail"
@@ -49,7 +51,8 @@ function set_globals() {
   #=============== KLIPPERSCREEN ================#
   KLIPPERSCREEN_ENV="${HOME}/.KlipperScreen-env"
   KLIPPERSCREEN_DIR="${HOME}/KlipperScreen"
-  KLIPPERSCREEN_REPO="https://github.com/jordanruthe/KlipperScreen.git"
+  KLIPPERSCREEN_REPO="https://github.com/Z-Bolt/KlipperScreen.git"
+  KLIPPERSCREEN_BRANCH="Z-BoltUI3"
 
   #========== MOONRAKER-TELEGRAM-BOT ============#
   TELEGRAM_BOT_ENV="${HOME}/moonraker-telegram-bot-env"
@@ -76,7 +79,7 @@ function set_globals() {
 
   #=============== Crowsnest ================#
   CROWSNEST_DIR="${HOME}/crowsnest"
-  CROWSNEST_REPO="https://github.com/mainsail-crew/crowsnest.git"
+  CROWSNEST_REPO="https://github.com/Z-Bolt/crowsnest.git"
 
   #=============== Mobileraker ================#
   MOBILERAKER_ENV="${HOME}/mobileraker-env"

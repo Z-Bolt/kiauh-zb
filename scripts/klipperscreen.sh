@@ -51,7 +51,7 @@ function klipperscreen_setup() {
 
   # clone into fresh KlipperScreen dir
   cd "${HOME}" || exit 1
-  if ! git clone "${KLIPPERSCREEN_REPO}" "${KLIPPERSCREEN_DIR}"; then
+  if ! git clone "${KLIPPERSCREEN_REPO}" -b "${KLIPPERSCREEN_BRANCH}" "${KLIPPERSCREEN_DIR}"; then
     print_error "Cloning KlipperScreen from\n ${KLIPPERSCREEN_REPO}\n failed!"
     exit 1
   fi
@@ -220,7 +220,8 @@ function patch_klipperscreen_update_manager() {
 [update_manager KlipperScreen]
 type: git_repo
 path: ${HOME}/KlipperScreen
-origin: https://github.com/jordanruthe/KlipperScreen.git
+origin: https://github.com/Z-Bolt/KlipperScreen.git
+primary_branch: Z-BoltUI3
 env: ${HOME}/.KlipperScreen-env/bin/python
 requirements: scripts/KlipperScreen-requirements.txt
 install_script: scripts/KlipperScreen-install.sh
