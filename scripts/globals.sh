@@ -80,6 +80,7 @@ function set_globals() {
   #=============== Crowsnest ================#
   CROWSNEST_DIR="${HOME}/crowsnest"
   CROWSNEST_REPO="https://github.com/Z-Bolt/crowsnest.git"
+  CROWSNEST_BRANCH="Z-BoltUI3"
 
   #=============== Mobileraker ================#
   MOBILERAKER_ENV="${HOME}/mobileraker-env"
