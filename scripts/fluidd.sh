@@ -463,7 +463,7 @@ function patch_fluidd_update_manager() {
 type: web
 channel: stable
 repo: Z-Bolt/fluidd-zb
-path: ~/fluidd-zb
+path: ~/fluidd
 MOONRAKER_CONF
 
     fi
