@@ -221,7 +221,7 @@ function patch_klipperscreen_update_manager() {
 type: git_repo
 path: ${HOME}/KlipperScreen
 origin: https://github.com/Z-Bolt/KlipperScreen.git
-primary_branch: Z-BoltUI3
+primary_branch: Z-BoltUI3.1
 env: ${HOME}/.KlipperScreen-env/bin/python
 requirements: scripts/KlipperScreen-requirements.txt
 install_script: scripts/KlipperScreen-install.sh

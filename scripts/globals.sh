@@ -52,7 +52,7 @@ function set_globals() {
   KLIPPERSCREEN_ENV="${HOME}/.KlipperScreen-env"
   KLIPPERSCREEN_DIR="${HOME}/KlipperScreen"
   KLIPPERSCREEN_REPO="https://github.com/Z-Bolt/KlipperScreen.git"
-  KLIPPERSCREEN_BRANCH="Z-BoltUI3"
+  KLIPPERSCREEN_BRANCH="Z-BoltUI3.1"
 
   #========== MOONRAKER-TELEGRAM-BOT ============#
   TELEGRAM_BOT_ENV="${HOME}/moonraker-telegram-bot-env"
