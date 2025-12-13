@@ -12,7 +12,8 @@ from pathlib import Path
 from core.constants import SYSTEMD
 
 # repo
-CROWSNEST_REPO = "https://github.com/mainsail-crew/crowsnest.git"
+CROWSNEST_REPO = "https://github.com/Z-Bolt/crowsnest.git"
+CROWSNEST_BRANCH = "Z-BoltUI3.1"
 
 # names
 CROWSNEST_SERVICE_NAME = "crowsnest.service"

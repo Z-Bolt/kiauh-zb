@@ -21,6 +21,7 @@ from components.crowsnest import (
     CROWSNEST_LOGROTATE_FILE,
     CROWSNEST_MULTI_CONFIG,
     CROWSNEST_REPO,
+    CROWSNEST_BRANCH,
     CROWSNEST_SERVICE_FILE,
     CROWSNEST_SERVICE_NAME,
 )
@@ -47,7 +48,7 @@ from utils.sys_utils import (
 
 def install_crowsnest() -> None:
     # Step 1: Clone crowsnest repo
-    git_clone_wrapper(CROWSNEST_REPO, CROWSNEST_DIR, "master")
+    git_clone_wrapper(CROWSNEST_REPO, CROWSNEST_DIR, CROWSNEST_BRANCH)
 
     # Step 2: Install dependencies
     check_install_dependencies({"make"})
@@ -120,7 +121,7 @@ def update_crowsnest() -> None:
         cmd_sysctl_service(CROWSNEST_SERVICE_NAME, "stop")
 
         if not CROWSNEST_DIR.exists():
-            git_clone_wrapper(CROWSNEST_REPO, CROWSNEST_DIR, "master")
+            git_clone_wrapper(CROWSNEST_REPO, CROWSNEST_DIR, CROWSNEST_BRANCH)
         else:
             Logger.print_status("Updating Crowsnest ...")
 

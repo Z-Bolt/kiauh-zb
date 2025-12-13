@@ -11,7 +11,8 @@ from pathlib import Path
 from core.constants import SYSTEMD
 
 # repo
-KLIPPERSCREEN_REPO = "https://github.com/KlipperScreen/KlipperScreen.git"
+KLIPPERSCREEN_REPO = "https://github.com/Z-Bolt/KlipperScreen.git"
+KLIPPERSCREEN_BRANCH = "Z-BotlUI3.1"
 
 # names
 KLIPPERSCREEN_SERVICE_NAME = "KlipperScreen.service"

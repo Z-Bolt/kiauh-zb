@@ -29,19 +29,19 @@ class FluiddConfigWeb(BaseWebClientConfig):
     config_dir: Path = Path.home().joinpath("fluidd-config")
     config_filename: str = "fluidd.cfg"
     config_section: str = f"include {config_filename}"
-    repo_url: str = "https://github.com/fluidd-core/fluidd-config.git"
+    repo_url: str = "https://github.com/Z-Bolt/fluidd-config.git"
 
 
 @dataclass()
 class FluiddData(BaseWebClient):
-    BASE_DL_URL = "https://github.com/fluidd-core/fluidd/releases"
+    BASE_DL_URL = "https://github.com/Z-Bolt/fluidd-zb/releases"
 
     client: WebClientType = WebClientType.FLUIDD
     name: str = client.value
     display_name: str = name.capitalize()
     client_dir: Path = Path.home().joinpath("fluidd")
     config_file: Path = client_dir.joinpath("config.json")
-    repo_path: str = "fluidd-core/fluidd"
+    repo_path: str = "Z-Bolt/fluidd-zb"
     nginx_config: Path = NGINX_SITES_AVAILABLE.joinpath("fluidd")
     nginx_access_log: Path = Path("/var/log/nginx/fluidd-access.log")
     nginx_error_log: Path = Path("/var/log/nginx/fluidd-error.log")

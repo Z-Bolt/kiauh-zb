@@ -18,6 +18,7 @@ from components.klipperscreen import (
     KLIPPERSCREEN_INSTALL_SCRIPT,
     KLIPPERSCREEN_LOG_NAME,
     KLIPPERSCREEN_REPO,
+    KLIPPERSCREEN_BRANCH,
     KLIPPERSCREEN_REQ_FILE,
     KLIPPERSCREEN_SERVICE_FILE,
     KLIPPERSCREEN_SERVICE_NAME,
@@ -77,7 +78,7 @@ def install_klipperscreen() -> None:
 
     check_install_dependencies()
 
-    git_clone_wrapper(KLIPPERSCREEN_REPO, KLIPPERSCREEN_DIR)
+    git_clone_wrapper(KLIPPERSCREEN_REPO, KLIPPERSCREEN_DIR, KLIPPERSCREEN_BRANCH)
 
     try:
         run(KLIPPERSCREEN_INSTALL_SCRIPT.as_posix(), shell=True, check=True)
@@ -104,6 +105,7 @@ def patch_klipperscreen_update_manager(instances: List[Moonraker]) -> None:
             ("type", "git_repo"),
             ("path", KLIPPERSCREEN_DIR.as_posix()),
             ("origin", KLIPPERSCREEN_REPO),
+            ("primary_branch", KLIPPERSCREEN_BRANCH),
             ("managed_services", "KlipperScreen"),
             ("env", f"{KLIPPERSCREEN_ENV_DIR}/bin/python"),
             ("requirements", KLIPPERSCREEN_REQ_FILE.as_posix()),
